@@ -1,0 +1,36 @@
+<div class="signup-form"><!--sign up form-->
+	<h2>Login Form</h2>
+	<form action="#" [formGroup]='signupForm' (ngSubmit)="add_data(signupForm)" >
+		
+
+		
+
+		<input type="text" placeholder="Email Address" formControlName='email'/>
+		<div *ngIf="signupForm.controls['email'].touched && !signupForm.controls['email'].valid ">
+			<span *ngIf="signupForm.controls['email'].hasError('required')">
+				Emailid Required
+			</span>
+			<span *ngIf="signupForm.controls['email'].hasError('email')">
+				Invalid Email
+			</span>
+		</div>
+
+		<input type="password" placeholder="Password" formControlName='password'/>
+		<div *ngIf="signupForm.controls['password'].touched && !signupForm.controls['password'].valid ">
+			<span *ngIf="signupForm.controls['password'].hasError('required')">
+				Password Required
+			</span>
+			<span *ngIf="signupForm.controls['password'].hasError('minlength')">
+				Minimum Length 4
+			</span>
+			<span *ngIf="signupForm.controls['password'].hasError('maxlength')">
+				Maximum Length 16
+			</span>
+		</div>
+
+		
+
+		<button type="submit" class="btn" [disabled]='!signupForm.valid'>login</button>
+	</form>
+	{{errMsg}}
+</div><!--/sign up form-->

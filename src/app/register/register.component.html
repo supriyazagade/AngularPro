@@ -1,0 +1,56 @@
+<div class="signup-form"><!--sign up form-->
+	<h2>New User Signup!</h2>
+	<form action="#" [formGroup]='signupForm' (ngSubmit)="add_data(signupForm)" >
+		<input type="text" placeholder="Person Name" formControlName='name'/>
+		<div *ngIf="signupForm.controls['name'].touched && !signupForm.controls['name'].valid ">
+			<span *ngIf="signupForm.controls['name'].hasError('required')">
+				Name Required
+			</span>
+			<span *ngIf="signupForm.controls['name'].hasError('pattern')">
+				Name Invalid
+			</span>
+			
+		</div>
+
+		<input type="text" placeholder="Person Mobile" formControlName='mobile'/>
+		<div *ngIf="signupForm.controls['mobile'].touched && !signupForm.controls['mobile'].valid ">
+			<span *ngIf="signupForm.controls['mobile'].hasError('required')">
+				Mobile Required
+			</span>
+			<span *ngIf="signupForm.controls['mobile'].hasError('pattern')">
+				Invalid Mobile
+			</span>
+		</div>
+
+		<input type="text" placeholder="Email Address" formControlName='email'/>
+		<div *ngIf="signupForm.controls['email'].touched && !signupForm.controls['email'].valid ">
+			<span *ngIf="signupForm.controls['email'].hasError('required')">
+				Emailid Required
+			</span>
+			<span *ngIf="signupForm.controls['email'].hasError('email')">
+				Invalid Email
+			</span>
+		</div>
+
+		<input type="password" placeholder="Password" formControlName='password'/>
+		<div *ngIf="signupForm.controls['password'].touched && !signupForm.controls['password'].valid ">
+			<span *ngIf="signupForm.controls['password'].hasError('required')">
+				Password Required
+			</span>
+			<span *ngIf="signupForm.controls['password'].hasError('minlength')">
+				Minimum Length 4
+			</span>
+			<span *ngIf="signupForm.controls['password'].hasError('maxlength')">
+				Maximum Length 16
+			</span>
+		</div>
+
+		<input type="password" placeholder="Confirm Password" formControlName='confirm_password'/>
+		<div *ngIf="signupForm.controls['confirm_password'].touched && !signupForm.controls['confirm_password'].valid ">
+			Person Confirm Password is Required
+		</div>
+
+		<button type="submit" class="btn" [disabled]='!signupForm.valid'>Signup</button>
+	</form>
+	{{err}}
+</div><!--/sign up form-->
